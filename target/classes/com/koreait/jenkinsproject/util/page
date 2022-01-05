@@ -1,0 +1,28 @@
+********Page 클래스 안에 미리 정해놓은 것은************************************************************
+ 				1. pagePerRecord => 페이지당 레코드 수.
+ 				2. pagePerBlock => 블록당 표시할 페이지의 수.
+ *********************************************************************************************
+ 
+ 	1. 총 게시물의 수를 구해서 만들어질 총 페이지의 수를 구한다.
+		 	1-1) 총 게시물의 수 가져오기
+		 		-> int totalRecord = Dao.00.selectCount();
+		 	게시물의 갯수를 setTotalRecord를 통해서 Page의 객체에 저장한다.
+		 	
+		 	1-2) setTotalPage를 호출하여 내장 되어 있는 저장과정을 거친다.
+			 	->	totalPage =	totalRecord / recordPerPage
+			 		if( totalPage % recordPerPage != 0){
+			 			totalPage++
+			 		}
+		 		 		만약 전체 게시물의 수와 페이지당 게시물의 수를 나눈 값이 떨어지지 않는다면,
+		 		총 페이지의 수를 하나 증가하여 저장하는 과정이 이루어 진다. 
+ 	
+ 	2. 현재 페이지를 request로 받아와서 첫 게시물과 마지막 게시물의 번호를 구한다.
+		 	2-1) 현재 페이지를 request로 받아와서 객체에 저장함.
+		 		=> setPage(page);
+		 	
+		 	2-2) setBeginRecord와 setEndRecord를 호출하여 현재 페이지에 나올 첫 번째 ROWNUM와 마지막 나올 ROWNUM을 구한다. 
+		 	
+		 	2-3) beginRecord와 EndRecord를 Map에 담아서  list를 불러오는 메소드를 실행한다.
+		 		=>	map.put("beginRecord", p.getBeginRecord()) ...
+		 		=>  List<free> list = Dao.00.selectlist(map);
+		 	

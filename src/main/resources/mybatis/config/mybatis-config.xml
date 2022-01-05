@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd" >
+
+<configuration>
+	
+	<settings>
+ 		 <setting name="mapUnderscoreToCamelCase" value="true"/> <!-- camelCase true로 바꿈. -->
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.koreait.jenkinsproject.domain.Member" alias="Member"/>	<!-- 이름이 길어서 별명을 주어서 쓰겠다는 뜻이다. -->
+		<typeAlias type="com.koreait.jenkinsproject.domain.Board" alias="Board"/>
+		<typeAlias type="com.koreait.jenkinsproject.domain.BoardAttach" alias="BoardAttach"/>
+	</typeAliases>
+	
+</configuration>
